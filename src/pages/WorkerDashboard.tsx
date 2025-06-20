@@ -10,14 +10,14 @@ import { toast } from "@/hooks/use-toast";
 import { 
   User, 
   Briefcase, 
-  DollarSign, 
   Calendar, 
   MapPin, 
   LogOut,
   Settings,
   Star,
   Clock,
-  CheckCircle
+  CheckCircle,
+  IndianRupee
 } from "lucide-react";
 
 const WorkerDashboard = () => {
@@ -27,9 +27,9 @@ const WorkerDashboard = () => {
     {
       id: 1,
       title: "House Cleaning",
-      employer: "Smith Family",
-      salary: "$20/hour",
-      location: "Manhattan, NY",
+      employer: "Sharma Family",
+      salary: "₹400/hour",
+      location: "Bandra, Mumbai",
       type: "Part-time",
       status: "available",
       description: "Weekly house cleaning for a 3-bedroom apartment",
@@ -38,9 +38,9 @@ const WorkerDashboard = () => {
     {
       id: 2,
       title: "Babysitting",
-      employer: "Johnson Family",
-      salary: "$18/hour",
-      location: "Brooklyn, NY",
+      employer: "Gupta Family",
+      salary: "₹350/hour",
+      location: "Koramangala, Bangalore",
       type: "Weekends",
       status: "applied",
       description: "Weekend babysitting for 2 children (ages 5 and 8)",
@@ -49,9 +49,9 @@ const WorkerDashboard = () => {
     {
       id: 3,
       title: "Elder Care",
-      employer: "Brown Family",
-      salary: "$25/hour",
-      location: "Queens, NY",
+      employer: "Patel Family",
+      salary: "₹500/hour",
+      location: "Connaught Place, Delhi",
       type: "Full-time",
       status: "interview",
       description: "Companion care for elderly gentleman",
@@ -105,7 +105,7 @@ const WorkerDashboard = () => {
   return (
     <div className="min-h-screen bg-app-bg">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b">
+      <header className="bg-app-bg shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-4">
@@ -247,7 +247,7 @@ const WorkerDashboard = () => {
                           {job.employer}
                         </span>
                         <span className="flex items-center">
-                          <DollarSign className="h-4 w-4 mr-1" />
+                          <IndianRupee className="h-4 w-4 mr-1" />
                           {job.salary}
                         </span>
                         <span className="flex items-center">

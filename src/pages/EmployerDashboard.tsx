@@ -19,7 +19,8 @@ import {
   Clock,
   Plus,
   Eye,
-  Edit
+  Edit,
+  IndianRupee
 } from "lucide-react";
 
 const EmployerDashboard = () => {
@@ -29,8 +30,8 @@ const EmployerDashboard = () => {
     {
       id: 1,
       title: "House Cleaning",
-      salary: "$20/hour",
-      location: "Manhattan, NY",
+      salary: "₹400/hour",
+      location: "Bandra, Mumbai",
       type: "Part-time",
       status: "active",
       applications: 8,
@@ -40,8 +41,8 @@ const EmployerDashboard = () => {
     {
       id: 2,
       title: "Babysitting",
-      salary: "$18/hour",
-      location: "Brooklyn, NY",
+      salary: "₹350/hour",
+      location: "Koramangala, Bangalore",
       type: "Weekends",
       status: "active",
       applications: 12,
@@ -51,8 +52,8 @@ const EmployerDashboard = () => {
     {
       id: 3,
       title: "Elder Care",
-      salary: "$25/hour",
-      location: "Queens, NY",
+      salary: "₹500/hour",
+      location: "Connaught Place, Delhi",
       type: "Full-time",
       status: "filled",
       applications: 5,
@@ -94,7 +95,7 @@ const EmployerDashboard = () => {
   return (
     <div className="min-h-screen bg-app-bg">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b">
+      <header className="bg-app-bg shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-4">
@@ -240,7 +241,7 @@ const EmployerDashboard = () => {
                       <p className="text-gray-600 mb-2">{job.description}</p>
                       <div className="flex items-center space-x-4 text-sm text-gray-500">
                         <span className="flex items-center">
-                          <User className="h-4 w-4 mr-1" />
+                          <IndianRupee className="h-4 w-4 mr-1" />
                           {job.salary}
                         </span>
                         <span className="flex items-center">
