@@ -26,20 +26,20 @@ export default {
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
 				primary: {
-					DEFAULT: 'hsl(198 93% 60%)',
-					foreground: 'hsl(0 0% 100%)'
+					DEFAULT: '#1A73E8',
+					foreground: '#FFFFFF'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
 					foreground: 'hsl(var(--secondary-foreground))'
 				},
 				accent: {
-					DEFAULT: 'hsl(142 76% 36%)',
-					foreground: 'hsl(0 0% 100%)'
+					DEFAULT: '#FFA500',
+					foreground: '#FFFFFF'
 				},
 				success: {
-					DEFAULT: 'hsl(142 76% 36%)',
-					foreground: 'hsl(0 0% 100%)'
+					DEFAULT: '#34A853',
+					foreground: '#FFFFFF'
 				},
 				destructive: {
 					DEFAULT: 'hsl(var(--destructive))',
@@ -69,10 +69,10 @@ export default {
 				}
 			},
 			backgroundColor: {
-				'app-bg': 'hsl(249 250 251)'
+				'app-bg': '#F9FAFB'
 			},
 			textColor: {
-				'app-text': 'hsl(33 33 33)'
+				'app-text': '#212121'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
