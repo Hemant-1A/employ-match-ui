@@ -25,7 +25,7 @@
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 255 165 0;
+    --accent: 173 58% 39%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
@@ -53,14 +53,14 @@
     --card: 33 33 33;
     --card-foreground: 249 250 251;
     --popover: 33 33 33;
-    --popover-foreground: 249 250 251;
+    --popover-foreground: 33 33 33;
     --primary: 26 115 232;
     --primary-foreground: 33 33 33;
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 249 250 251;
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
-    --accent: 255 165 0;
+    --accent: 173 58% 39%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
@@ -94,7 +94,7 @@
   }
 
   .btn-accent {
-    @apply bg-accent text-accent-foreground hover:bg-accent/90 transition-colors duration-200;
+    @apply bg-accent text-accent-foreground hover:bg-accent/80 transition-colors duration-200;
   }
 
   .btn-success {
