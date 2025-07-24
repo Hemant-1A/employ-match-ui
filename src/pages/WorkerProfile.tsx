@@ -88,15 +88,20 @@ const WorkerProfile = () => {
 
   const languageOptions = [
     "English",
-    "Spanish",
-    "French",
-    "Chinese",
-    "Arabic",
-    "Portuguese",
-    "Russian",
-    "German",
-    "Italian",
-    "Hindi"
+    "Arabic", 
+    "Hindi",
+    "Urdu",
+    "Tagalog",
+    "Filipino",
+    "Bangla",
+    "Malayalam",
+    "Nepali",
+    "Indonesian",
+    "Sinhala",
+    "Tamil",
+    "Swahili",
+    "Amharic",
+    "Others"
   ];
 
   useEffect(() => {
