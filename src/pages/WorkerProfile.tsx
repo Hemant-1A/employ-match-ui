@@ -35,8 +35,9 @@ const WorkerProfile = () => {
     email: user?.email || "",
     phone: "",
     address: "",
-    city: "",
+    country: "",
     state: "",
+    city: "",
     zipCode: "",
     bio: "",
     hourlyRate: "",
@@ -103,6 +104,27 @@ const WorkerProfile = () => {
     "Amharic",
     "Others"
   ];
+
+  const countryOptions = [
+    { value: "india", label: "India" },
+    { value: "uae", label: "UAE (Dubai)" }
+  ];
+
+  const stateOptions = {
+    india: [
+      "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
+      "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka",
+      "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram",
+      "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu",
+      "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal",
+      "Delhi", "Jammu and Kashmir", "Ladakh", "Puducherry", "Chandigarh",
+      "Andaman and Nicobar Islands", "Dadra and Nagar Haveli and Daman and Diu",
+      "Lakshadweep"
+    ],
+    uae: [
+      "Dubai", "Abu Dhabi", "Sharjah", "Ajman", "Fujairah", "Ras Al Khaimah", "Umm Al Quwain"
+    ]
+  };
 
   useEffect(() => {
     if (!isAuthenticated || !isWorker) {
@@ -282,7 +304,59 @@ const WorkerProfile = () => {
                   placeholder="123 Main Street"
                 />
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <Label htmlFor="country">Country</Label>
+                  <Select
+                    value={profileData.country}
+                    onValueChange={(value) => {
+                      setProfileData(prev => ({ ...prev, country: value, state: "" }))
+                    }}
+                  >
+                    <SelectTrigger className="mt-1">
+                      <SelectValue placeholder="Select country" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-white dark:bg-gray-800 border shadow-lg z-50">
+                      {countryOptions.map((country) => (
+                        <SelectItem key={country.value} value={country.value}>
+                          {country.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+                
+                <div>
+                  <Label htmlFor="state">State/Emirate</Label>
+                  <Select
+                    value={profileData.state}
+                    onValueChange={(value) => 
+                      setProfileData(prev => ({ ...prev, state: value }))
+                    }
+                    disabled={!profileData.country}
+                  >
+                    <SelectTrigger className="mt-1">
+                      <SelectValue 
+                        placeholder={
+                          profileData.country 
+                            ? `Select ${profileData.country === 'uae' ? 'emirate' : 'state'}` 
+                            : "Select country first"
+                        } 
+                      />
+                    </SelectTrigger>
+                    <SelectContent className="bg-white dark:bg-gray-800 border shadow-lg z-50">
+                      {profileData.country && stateOptions[profileData.country as keyof typeof stateOptions]?.map((state) => (
+                        <SelectItem key={state} value={state}>
+                          {state}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <Label htmlFor="city">City</Label>
                   <Input
@@ -291,36 +365,20 @@ const WorkerProfile = () => {
                     value={profileData.city}
                     onChange={handleInputChange}
                     className="mt-1"
-                    placeholder="New York"
+                    placeholder="Enter city"
                   />
                 </div>
                 <div>
-                  <Label htmlFor="state">State</Label>
-                  <Select
-                    onValueChange={(value) => 
-                      setProfileData(prev => ({ ...prev, state: value }))
-                    }
-                  >
-                    <SelectTrigger className="mt-1">
-                      <SelectValue placeholder="Select state" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="ny">New York</SelectItem>
-                      <SelectItem value="ca">California</SelectItem>
-                      <SelectItem value="tx">Texas</SelectItem>
-                      <SelectItem value="fl">Florida</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div>
-                  <Label htmlFor="zipCode">ZIP Code</Label>
+                  <Label htmlFor="zipCode">
+                    {profileData.country === 'india' ? 'PIN Code' : 'ZIP/Postal Code'}
+                  </Label>
                   <Input
                     id="zipCode"
                     name="zipCode"
                     value={profileData.zipCode}
                     onChange={handleInputChange}
                     className="mt-1"
-                    placeholder="10001"
+                    placeholder={profileData.country === 'india' ? '110001' : '12345'}
                   />
                 </div>
               </div>
