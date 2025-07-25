@@ -22,7 +22,7 @@ import {
   ArrowLeft,
   Star,
   Calendar,
-  DollarSign
+  IndianRupee
 } from "lucide-react";
 
 const WorkerProfile = () => {
@@ -353,9 +353,9 @@ const WorkerProfile = () => {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <Label htmlFor="hourlyRate">Hourly Rate</Label>
+                  <Label htmlFor="hourlyRate">Hourly Rate (₹)</Label>
                   <div className="relative mt-1">
-                    <DollarSign className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                    <IndianRupee className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                     <Input
                       id="hourlyRate"
                       name="hourlyRate"
@@ -363,7 +363,7 @@ const WorkerProfile = () => {
                       value={profileData.hourlyRate}
                       onChange={handleInputChange}
                       className="pl-10"
-                      placeholder="20"
+                      placeholder="500"
                     />
                   </div>
                 </div>

@@ -18,6 +18,7 @@ const WorkerRegister = () => {
     password: "",
     confirmPassword: "",
     phone: "",
+    address: "",
     agreeToTerms: false
   });
   const [isLoading, setIsLoading] = useState(false);
@@ -59,15 +60,16 @@ const WorkerRegister = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          first_name: formData.firstName,
-          last_name: formData.lastName,
-          email: formData.email,
-          password: formData.password,
-          phone: formData.phone,
-          is_worker: true,
-          is_employer: false
-        }),
+          body: JSON.stringify({
+            first_name: formData.firstName,
+            last_name: formData.lastName,
+            email: formData.email,
+            password: formData.password,
+            phone: formData.phone,
+            address: formData.address,
+            is_worker: true,
+            is_employer: false
+          }),
       });
 
       if (response.ok) {
@@ -183,6 +185,20 @@ const WorkerRegister = () => {
                   onChange={handleInputChange}
                   className="mt-1"
                   placeholder="+1 (555) 123-4567"
+                />
+              </div>
+
+              <div>
+                <Label htmlFor="address">Address</Label>
+                <Input
+                  id="address"
+                  name="address"
+                  type="text"
+                  required
+                  value={formData.address}
+                  onChange={handleInputChange}
+                  className="mt-1"
+                  placeholder="Enter your full address"
                 />
               </div>
 
