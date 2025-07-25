@@ -126,6 +126,42 @@ const WorkerProfile = () => {
     ]
   };
 
+  const cityOptions = {
+    india: {
+      "Maharashtra": ["Mumbai", "Pune", "Nagpur", "Nashik", "Aurangabad", "Solapur", "Kolhapur"],
+      "Delhi": ["New Delhi", "Dwarka", "Rohini", "Lajpat Nagar", "Karol Bagh", "Connaught Place"],
+      "Karnataka": ["Bangalore", "Mysore", "Hubli", "Mangalore", "Belgaum", "Gulbarga"],
+      "Tamil Nadu": ["Chennai", "Coimbatore", "Madurai", "Tiruchirappalli", "Salem", "Tirunelveli"],
+      "Gujarat": ["Ahmedabad", "Surat", "Vadodara", "Rajkot", "Bhavnagar", "Jamnagar"],
+      "Rajasthan": ["Jaipur", "Jodhpur", "Udaipur", "Kota", "Bikaner", "Ajmer"],
+      "West Bengal": ["Kolkata", "Howrah", "Durgapur", "Asansol", "Siliguri", "Malda"],
+      "Uttar Pradesh": ["Lucknow", "Kanpur", "Ghaziabad", "Agra", "Varanasi", "Meerut", "Allahabad"],
+      "Haryana": ["Gurgaon", "Faridabad", "Hisar", "Panipat", "Karnal", "Ambala"],
+      "Punjab": ["Chandigarh", "Ludhiana", "Amritsar", "Jalandhar", "Patiala", "Bathinda"],
+      "Kerala": ["Thiruvananthapuram", "Kochi", "Kozhikode", "Thrissur", "Kollam", "Kannur"],
+      "Andhra Pradesh": ["Hyderabad", "Visakhapatnam", "Vijayawada", "Guntur", "Nellore", "Kurnool"],
+      "Telangana": ["Hyderabad", "Warangal", "Nizamabad", "Karimnagar", "Ramagundam", "Khammam"],
+      "Madhya Pradesh": ["Bhopal", "Indore", "Gwalior", "Jabalpur", "Ujjain", "Sagar"],
+      "Odisha": ["Bhubaneswar", "Cuttack", "Rourkela", "Berhampur", "Sambalpur", "Puri"],
+      "Bihar": ["Patna", "Gaya", "Bhagalpur", "Muzaffarpur", "Purnia", "Darbhanga"],
+      "Jharkhand": ["Ranchi", "Jamshedpur", "Dhanbad", "Bokaro", "Deoghar", "Hazaribagh"],
+      "Assam": ["Guwahati", "Silchar", "Dibrugarh", "Jorhat", "Nagaon", "Tinsukia"],
+      "Chhattisgarh": ["Raipur", "Bhilai", "Korba", "Bilaspur", "Durg", "Rajnandgaon"],
+      "Uttarakhand": ["Dehradun", "Haridwar", "Roorkee", "Haldwani", "Rudrapur", "Kashipur"],
+      "Himachal Pradesh": ["Shimla", "Dharamshala", "Solan", "Mandi", "Kullu", "Hamirpur"],
+      "Goa": ["Panaji", "Margao", "Vasco da Gama", "Mapusa", "Ponda", "Bicholim"]
+    },
+    uae: {
+      "Dubai": ["Dubai Marina", "Downtown Dubai", "Jumeirah", "Deira", "Bur Dubai", "Dubai Sports City", "Business Bay"],
+      "Abu Dhabi": ["Abu Dhabi City", "Al Ain", "Khalifa City", "Yas Island", "Saadiyat Island", "Al Raha Beach"],
+      "Sharjah": ["Sharjah City", "University City", "Al Qasba", "Al Majaz", "Al Nahda", "Muwaileh"],
+      "Ajman": ["Ajman City", "Al Nuaimiya", "Al Rashidiya", "Al Hamidiyah", "Al Jurf", "Masfout"],
+      "Fujairah": ["Fujairah City", "Kalba", "Dibba Al-Fujairah", "Masafi", "Al Bidyah", "Qidfa"],
+      "Ras Al Khaimah": ["Ras Al Khaimah City", "Al Hamra", "Al Marjan Island", "Julfar", "Al Qawasim", "Khuzam"],
+      "Umm Al Quwain": ["Umm Al Quwain City", "Al Salama", "Falaj Al Mualla", "Al Rashid", "Al Humra", "Old Harbour"]
+    }
+  };
+
   useEffect(() => {
     if (!isAuthenticated || !isWorker) {
       navigate('/worker/login');
@@ -332,7 +368,7 @@ const WorkerProfile = () => {
                   <Select
                     value={profileData.state}
                     onValueChange={(value) => 
-                      setProfileData(prev => ({ ...prev, state: value }))
+                      setProfileData(prev => ({ ...prev, state: value, city: "" }))
                     }
                     disabled={!profileData.country}
                   >
@@ -359,14 +395,31 @@ const WorkerProfile = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <Label htmlFor="city">City</Label>
-                  <Input
-                    id="city"
-                    name="city"
+                  <Select
                     value={profileData.city}
-                    onChange={handleInputChange}
-                    className="mt-1"
-                    placeholder="Enter city"
-                  />
+                    onValueChange={(value) => 
+                      setProfileData(prev => ({ ...prev, city: value }))
+                    }
+                    disabled={!profileData.state}
+                  >
+                    <SelectTrigger className="mt-1">
+                      <SelectValue 
+                        placeholder={
+                          profileData.state 
+                            ? "Select city" 
+                            : "Select state first"
+                        } 
+                      />
+                    </SelectTrigger>
+                    <SelectContent className="bg-white dark:bg-gray-800 border shadow-lg z-50">
+                      {profileData.country && profileData.state && 
+                        cityOptions[profileData.country as keyof typeof cityOptions]?.[profileData.state]?.map((city) => (
+                          <SelectItem key={city} value={city}>
+                            {city}
+                          </SelectItem>
+                        ))}
+                    </SelectContent>
+                  </Select>
                 </div>
                 <div>
                   <Label htmlFor="zipCode">
