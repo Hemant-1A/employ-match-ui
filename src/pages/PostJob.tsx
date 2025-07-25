@@ -13,7 +13,7 @@ import { toast } from "@/hooks/use-toast";
 import { 
   Briefcase,
   MapPin, 
-  DollarSign,
+  IndianRupee,
   Calendar,
   Clock,
   Users,
@@ -34,8 +34,9 @@ const PostJob = () => {
     salaryType: "hourly",
     jobType: "",
     location: "",
-    city: "",
+    country: "",
     state: "",
+    city: "",
     zipCode: "",
     startDate: "",
     duration: "",
@@ -93,6 +94,63 @@ const PostJob = () => {
     "Sunday - Afternoon",
     "Sunday - Evening"
   ];
+
+  const countryOptions = [
+    { value: "india", label: "India" },
+    { value: "uae", label: "UAE (Dubai)" }
+  ];
+
+  const stateOptions = {
+    india: [
+      "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
+      "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka",
+      "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram",
+      "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu",
+      "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal",
+      "Delhi", "Jammu and Kashmir", "Ladakh", "Puducherry", "Chandigarh",
+      "Andaman and Nicobar Islands", "Dadra and Nagar Haveli and Daman and Diu",
+      "Lakshadweep"
+    ],
+    uae: [
+      "Dubai", "Abu Dhabi", "Sharjah", "Ajman", "Fujairah", "Ras Al Khaimah", "Umm Al Quwain"
+    ]
+  };
+
+  const cityOptions = {
+    india: {
+      "Maharashtra": ["Mumbai", "Pune", "Nagpur", "Nashik", "Aurangabad", "Solapur", "Kolhapur"],
+      "Delhi": ["New Delhi", "Dwarka", "Rohini", "Lajpat Nagar", "Karol Bagh", "Connaught Place"],
+      "Karnataka": ["Bangalore", "Mysore", "Hubli", "Mangalore", "Belgaum", "Gulbarga"],
+      "Tamil Nadu": ["Chennai", "Coimbatore", "Madurai", "Tiruchirappalli", "Salem", "Tirunelveli"],
+      "Gujarat": ["Ahmedabad", "Surat", "Vadodara", "Rajkot", "Bhavnagar", "Jamnagar"],
+      "Rajasthan": ["Jaipur", "Jodhpur", "Udaipur", "Kota", "Bikaner", "Ajmer"],
+      "West Bengal": ["Kolkata", "Howrah", "Durgapur", "Asansol", "Siliguri", "Malda"],
+      "Uttar Pradesh": ["Lucknow", "Kanpur", "Ghaziabad", "Agra", "Varanasi", "Meerut", "Allahabad"],
+      "Haryana": ["Gurgaon", "Faridabad", "Hisar", "Panipat", "Karnal", "Ambala"],
+      "Punjab": ["Chandigarh", "Ludhiana", "Amritsar", "Jalandhar", "Patiala", "Bathinda"],
+      "Kerala": ["Thiruvananthapuram", "Kochi", "Kozhikode", "Thrissur", "Kollam", "Kannur"],
+      "Andhra Pradesh": ["Hyderabad", "Visakhapatnam", "Vijayawada", "Guntur", "Nellore", "Kurnool"],
+      "Telangana": ["Hyderabad", "Warangal", "Nizamabad", "Karimnagar", "Ramagundam", "Khammam"],
+      "Madhya Pradesh": ["Bhopal", "Indore", "Gwalior", "Jabalpur", "Ujjain", "Sagar"],
+      "Odisha": ["Bhubaneswar", "Cuttack", "Rourkela", "Berhampur", "Sambalpur", "Puri"],
+      "Bihar": ["Patna", "Gaya", "Bhagalpur", "Muzaffarpur", "Purnia", "Darbhanga"],
+      "Jharkhand": ["Ranchi", "Jamshedpur", "Dhanbad", "Bokaro", "Deoghar", "Hazaribagh"],
+      "Assam": ["Guwahati", "Silchar", "Dibrugarh", "Jorhat", "Nagaon", "Tinsukia"],
+      "Chhattisgarh": ["Raipur", "Bhilai", "Korba", "Bilaspur", "Durg", "Rajnandgaon"],
+      "Uttarakhand": ["Dehradun", "Haridwar", "Roorkee", "Haldwani", "Rudrapur", "Kashipur"],
+      "Himachal Pradesh": ["Shimla", "Dharamshala", "Solan", "Mandi", "Kullu", "Hamirpur"],
+      "Goa": ["Panaji", "Margao", "Vasco da Gama", "Mapusa", "Ponda", "Bicholim"]
+    },
+    uae: {
+      "Dubai": ["Dubai Marina", "Downtown Dubai", "Jumeirah", "Deira", "Bur Dubai", "Dubai Sports City", "Business Bay"],
+      "Abu Dhabi": ["Abu Dhabi City", "Al Ain", "Khalifa City", "Yas Island", "Saadiyat Island", "Al Raha Beach"],
+      "Sharjah": ["Sharjah City", "University City", "Al Qasba", "Al Majaz", "Al Nahda", "Muwaileh"],
+      "Ajman": ["Ajman City", "Al Nuaimiya", "Al Rashidiya", "Al Hamidiyah", "Al Jurf", "Masfout"],
+      "Fujairah": ["Fujairah City", "Kalba", "Dibba Al-Fujairah", "Masafi", "Al Bidyah", "Qidfa"],
+      "Ras Al Khaimah": ["Ras Al Khaimah City", "Al Hamra", "Al Marjan Island", "Julfar", "Al Qawasim", "Khuzam"],
+      "Umm Al Quwain": ["Umm Al Quwain City", "Al Salama", "Falaj Al Mualla", "Al Rashid", "Al Humra", "Old Harbour"]
+    }
+  };
 
   useEffect(() => {
     if (!isAuthenticated || !isEmployer) {
@@ -272,7 +330,7 @@ const PostJob = () => {
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center">
-                <DollarSign className="h-5 w-5 mr-2" />
+                <IndianRupee className="h-5 w-5 mr-2" />
                 Compensation
               </CardTitle>
               <CardDescription>
@@ -307,18 +365,21 @@ const PostJob = () => {
                     {jobData.salaryType === 'hourly' ? 'Hourly Rate' :
                      jobData.salaryType === 'daily' ? 'Daily Rate' :
                      jobData.salaryType === 'weekly' ? 'Weekly Rate' :
-                     jobData.salaryType === 'monthly' ? 'Monthly Rate' : 'Fixed Amount'} ($)
+                     jobData.salaryType === 'monthly' ? 'Monthly Rate' : 'Fixed Amount'} (₹)
                   </Label>
-                  <Input
-                    id="hourlyRate"
-                    name="hourlyRate"
-                    type="number"
-                    value={jobData.hourlyRate}
-                    onChange={handleInputChange}
-                    className="mt-1"
-                    placeholder="20"
-                    required
-                  />
+                  <div className="relative mt-1">
+                    <IndianRupee className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
+                    <Input
+                      id="hourlyRate"
+                      name="hourlyRate"
+                      type="number"
+                      value={jobData.hourlyRate}
+                      onChange={handleInputChange}
+                      className="pl-10"
+                      placeholder="500"
+                      required
+                    />
+                  </div>
                 </div>
               </div>
 
@@ -350,7 +411,7 @@ const PostJob = () => {
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
-                <Label htmlFor="location">Address</Label>
+                <Label htmlFor="location">Street Address</Label>
                 <Input
                   id="location"
                   name="location"
@@ -362,46 +423,97 @@ const PostJob = () => {
                 />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <Label htmlFor="city">City</Label>
-                  <Input
-                    id="city"
-                    name="city"
-                    value={jobData.city}
-                    onChange={handleInputChange}
-                    className="mt-1"
-                    placeholder="New York"
-                    required
-                  />
-                </div>
-                <div>
-                  <Label htmlFor="state">State</Label>
+                  <Label htmlFor="country">Country</Label>
                   <Select
-                    onValueChange={(value) => 
-                      setJobData(prev => ({ ...prev, state: value }))
-                    }
+                    value={jobData.country}
+                    onValueChange={(value) => {
+                      setJobData(prev => ({ ...prev, country: value, state: "", city: "" }))
+                    }}
                   >
                     <SelectTrigger className="mt-1">
-                      <SelectValue placeholder="Select state" />
+                      <SelectValue placeholder="Select country" />
                     </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="ny">New York</SelectItem>
-                      <SelectItem value="ca">California</SelectItem>
-                      <SelectItem value="tx">Texas</SelectItem>
-                      <SelectItem value="fl">Florida</SelectItem>
+                    <SelectContent className="bg-white dark:bg-gray-800 border shadow-lg z-50">
+                      {countryOptions.map((country) => (
+                        <SelectItem key={country.value} value={country.value}>
+                          {country.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+                
+                <div>
+                  <Label htmlFor="state">State/Emirate</Label>
+                  <Select
+                    value={jobData.state}
+                    onValueChange={(value) => 
+                      setJobData(prev => ({ ...prev, state: value, city: "" }))
+                    }
+                    disabled={!jobData.country}
+                  >
+                    <SelectTrigger className="mt-1">
+                      <SelectValue 
+                        placeholder={
+                          jobData.country 
+                            ? `Select ${jobData.country === 'uae' ? 'emirate' : 'state'}` 
+                            : "Select country first"
+                        } 
+                      />
+                    </SelectTrigger>
+                    <SelectContent className="bg-white dark:bg-gray-800 border shadow-lg z-50">
+                      {jobData.country && stateOptions[jobData.country as keyof typeof stateOptions]?.map((state) => (
+                        <SelectItem key={state} value={state}>
+                          {state}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <Label htmlFor="city">City</Label>
+                  <Select
+                    value={jobData.city}
+                    onValueChange={(value) => 
+                      setJobData(prev => ({ ...prev, city: value }))
+                    }
+                    disabled={!jobData.state}
+                  >
+                    <SelectTrigger className="mt-1">
+                      <SelectValue 
+                        placeholder={
+                          jobData.state 
+                            ? "Select city" 
+                            : "Select state first"
+                        } 
+                      />
+                    </SelectTrigger>
+                    <SelectContent className="bg-white dark:bg-gray-800 border shadow-lg z-50">
+                      {jobData.country && jobData.state && 
+                        cityOptions[jobData.country as keyof typeof cityOptions]?.[jobData.state]?.map((city) => (
+                          <SelectItem key={city} value={city}>
+                            {city}
+                          </SelectItem>
+                        ))}
                     </SelectContent>
                   </Select>
                 </div>
                 <div>
-                  <Label htmlFor="zipCode">ZIP Code</Label>
+                  <Label htmlFor="zipCode">
+                    {jobData.country === 'india' ? 'PIN Code' : 'ZIP/Postal Code'}
+                  </Label>
                   <Input
                     id="zipCode"
                     name="zipCode"
                     value={jobData.zipCode}
                     onChange={handleInputChange}
                     className="mt-1"
-                    placeholder="10001"
+                    placeholder={jobData.country === 'india' ? '110001' : '12345'}
                   />
                 </div>
               </div>
