@@ -9,6 +9,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useAuth } from "@/contexts/AuthContext";
 import { toast } from "@/hooks/use-toast";
+import Footer from "@/components/Footer";
 
 const WorkerRegister = () => {
   const [formData, setFormData] = useState({
@@ -278,6 +279,7 @@ const WorkerRegister = () => {
           </CardContent>
         </Card>
       </div>
+      <Footer />
     </div>
   );
 };

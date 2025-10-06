@@ -24,6 +24,7 @@ import {
   Calendar,
   IndianRupee
 } from "lucide-react";
+import Footer from "@/components/Footer";
 
 const WorkerProfile = () => {
   const { user, isAuthenticated, isWorker } = useAuth();
@@ -630,6 +631,7 @@ const WorkerProfile = () => {
           </div>
         </form>
       </div>
+      <Footer />
     </div>
   );
 };

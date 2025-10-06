@@ -10,6 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Checkbox } from "@/components/ui/checkbox";
 import { useAuth } from "@/contexts/AuthContext";
 import { toast } from "@/hooks/use-toast";
+import Footer from "@/components/Footer";
 import { 
   Briefcase,
   MapPin, 
@@ -653,6 +654,7 @@ const PostJob = () => {
           </div>
         </form>
       </div>
+      <Footer />
     </div>
   );
 };
