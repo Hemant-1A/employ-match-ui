@@ -22,6 +22,7 @@ import {
   Edit,
   IndianRupee
 } from "lucide-react";
+import Footer from "@/components/Footer";
 
 const EmployerDashboard = () => {
   const { user, logout, isAuthenticated, isEmployer } = useAuth();
@@ -291,6 +292,7 @@ const EmployerDashboard = () => {
           </CardContent>
         </Card>
       </div>
+      <Footer />
     </div>
   );
 };

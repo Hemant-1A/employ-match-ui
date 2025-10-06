@@ -19,6 +19,7 @@ import {
   CheckCircle,
   IndianRupee
 } from "lucide-react";
+import Footer from "@/components/Footer";
 
 const WorkerDashboard = () => {
   const { user, logout, isAuthenticated, isWorker } = useAuth();
@@ -290,6 +291,7 @@ const WorkerDashboard = () => {
           </CardContent>
         </Card>
       </div>
+      <Footer />
     </div>
   );
 };
