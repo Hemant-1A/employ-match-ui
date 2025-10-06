@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Users, Briefcase, Shield, Star } from "lucide-react";
+import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
@@ -141,12 +142,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-800 text-white py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p>&copy; 2024 DomestyX. All rights reserved.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
