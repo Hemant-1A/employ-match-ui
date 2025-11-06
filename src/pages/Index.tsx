@@ -39,12 +39,12 @@ const Index = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/worker/register">
-              <Button size="lg" className="btn-primary px-8 py-3 text-lg">
+              <Button size="lg" variant="outline" className="px-8 py-3 text-lg border-primary text-primary hover:bg-primary hover:text-white">
                 I'm a Worker
               </Button>
             </Link>
             <Link to="/employer/register">
-              <Button size="lg" variant="outline" className="px-8 py-3 text-lg border-primary text-primary hover:bg-primary hover:text-white">
+              <Button size="lg" className="btn-primary px-8 py-3 text-lg">
                 I'm an Employer
               </Button>
             </Link>
@@ -134,7 +134,7 @@ const Index = () => {
               </Button>
             </Link>
             <Link to="/employer/register">
-              <Button size="lg" variant="outline" className="px-8 py-3 text-lg border-white text-white hover:bg-white hover:text-primary">
+              <Button size="lg" variant="secondary" className="px-8 py-3 text-lg">
                 Find Workers
               </Button>
             </Link>
