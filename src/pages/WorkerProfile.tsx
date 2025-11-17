@@ -46,6 +46,7 @@ const WorkerProfile = () => {
     availability: [] as string[],
     services: [] as string[],
     languages: [] as string[],
+    otherLanguages: "",
     hasTransportation: false,
     hasReferences: false,
     isBackgroundChecked: false
@@ -92,18 +93,7 @@ const WorkerProfile = () => {
     "English",
     "Arabic", 
     "Hindi",
-    "Urdu",
-    "Tagalog",
-    "Filipino",
-    "Bangla",
-    "Malayalam",
-    "Nepali",
-    "Indonesian",
-    "Sinhala",
-    "Tamil",
-    "Swahili",
-    "Amharic",
-    "Others"
+    "Urdu"
   ];
 
   const countryOptions = [
@@ -568,7 +558,7 @@ const WorkerProfile = () => {
             <CardContent className="space-y-6">
               <div>
                 <Label className="text-base font-medium">Languages Spoken</Label>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-2">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-2">
                   {languageOptions.map((language) => (
                     <div key={language} className="flex items-center space-x-2">
                       <Checkbox
@@ -581,6 +571,17 @@ const WorkerProfile = () => {
                       </Label>
                     </div>
                   ))}
+                </div>
+                <div className="mt-4">
+                  <Label htmlFor="otherLanguages">Other Languages (comma separated)</Label>
+                  <Input
+                    id="otherLanguages"
+                    name="otherLanguages"
+                    placeholder="e.g., French, German, Spanish"
+                    value={profileData.otherLanguages}
+                    onChange={handleInputChange}
+                    className="mt-2"
+                  />
                 </div>
               </div>
 
