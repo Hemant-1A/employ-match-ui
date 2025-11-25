@@ -8,6 +8,17 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* About Section */}
           <div>
+            <p className="text-xs text-gray-400 mb-1">
+              Powered by{" "}
+              <a 
+                href="https://www.fastercapital.com/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:text-primary transition-colors underline"
+              >
+                FasterCapital
+              </a>
+            </p>
             <h3 className="text-white text-lg font-bold mb-4">DomestyX</h3>
             <p className="text-sm mb-4">
               Connecting skilled domestic workers with families who need reliable help. Building trust, one connection at a time.
